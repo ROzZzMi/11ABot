@@ -4,7 +4,7 @@ from config import qst2_list, qst_list, TOKEN
 
 bot = telebot.TeleBot(token=TOKEN)
 
-user_list = []
+user_list = ([])
 
 @bot.message_handler(commands=['join'])
 def join(message):
