@@ -8,7 +8,7 @@ user_list = []
 
 @bot.message_handler(commands=['join'])
 def join(message):
-        name = message.from_user.username
+        name = message.from_user.first_name
         user_list.append('@' + name)
         bot.send_message(message.chat.id, "Ти у грі!")
 
