@@ -8,16 +8,31 @@ user_list = []
 
 @bot.message_handler(commands=['join'])
 def join(message):
-        name = message.from_user.username
-        user_list.append('@' + name)
-        bot.send_message(message.chat.id, "Ти у грі!")
+        un = message.from_user.username
+        name = message.from_user.first_name
+
+        try:
+            user_list.append('@' + un)
+            bot.send_message(message.chat.id, "Ти у грі!")
+        except:
+            user_list.append(name)
+            bot.send_message(message.chat.id, "Ти у грі!")
 
 @bot.message_handler(commands=['leave'])
 def leave(message):
     f'{user_list}'
-    name = message.from_user.username
-    user_list.remove('@' + name)
-    bot.send_message(message.chat.id, 'Ти покинув(-ла) гру')
+    un = message.from_user.username
+    name = message.from_user.first_name
+    
+    try:
+        try:
+            user_list.remove('@' + un)
+            bot.send_message(message.chat.id, 'Ти покинув(-ла) гру')
+        except:
+            user_list.remove(name)
+            bot.send_message(message.chat.id, 'Ти покинув(-ла) гру')
+    except:
+        bot.send_message(message.chat.id, 'Ти вже покинув(-ла) гру')
 
 @bot.message_handler(commands=['list'])
 def list(message):
@@ -33,14 +48,17 @@ def start1(message):
 
 @bot.message_handler(commands=['startgame2'])
 def start2(message):
-    f'{qst2_list}'
-    n = 0
-    q2 = qst2_list[n]
-    bot.send_poll(message.chat.id, question=q2, options=(user_list), is_anonymous=False)
-    del qst2_list[n]
+    try:
+        f'{qst2_list}'
+        n = 0
+        q2 = qst2_list[n]
+        bot.send_poll(message.chat.id, question=q2, options=(user_list), is_anonymous=False)
+        del qst2_list[n]
+    except:
+        bot.send_message(message.chat.id, 'Питання закінчилися :(') 
 
 @bot.message_handler(commands=['endgame'])
-def leave(message):
+def endgame(message):
         user_list.clear()
         bot.send_message(message.chat.id, "Гру закінчено!")
 
