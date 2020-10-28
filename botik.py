@@ -1,6 +1,6 @@
 import telebot
 import random
-from config import qst2_list, qst_list, TOKEN
+from config import qst3_list, qst2_list, qst_list, TOKEN
 
 bot = telebot.TeleBot(token=TOKEN)
 
