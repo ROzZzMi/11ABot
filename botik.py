@@ -64,7 +64,7 @@ def start2(message):
     try:
         n = 0
         q2 = qst2_list[n]
-        bot.send_poll(message.chat.id, question=q2, options=(user_list), is_anonymous=False)
+        bot.send_poll(message.chat.id, question=q2, options=(user_list), is_anonymous=False, allows_multiple_answers=True)
         del qst2_list[n]
     except:
         bot.send_message(message.chat.id, 'Питання закінчилися :(') 
