@@ -82,13 +82,13 @@ def start3(message):
 
         if i < all:
             pers = user_list[i] 
-            bot.send_message(message.chat.id, 'Питання для ' + pers + ' (' + random.choice(user_list) + ')\n' + q3)
+            bot.send_message(message.chat.id, 'Питання для ' + pers + '\n' + q3) #' (' + random.choice(user_list) + ')\n' + q3)
             del qst3_list[j]
             i += 1
         else: 
             i = 0
             pers = user_list[i] 
-            bot.send_message(message.chat.id, 'Питання для ' + pers + ' (' + random.choice(user_list) + ')\n' + q3)
+            bot.send_message(message.chat.id, 'Питання для ' + pers + '\n' + q3) #' (' + random.choice(user_list) + ')\n' + q3)
             del qst3_list[j]
     except:
         bot.send_message(message.chat.id, 'Питання закінчилися :(')
